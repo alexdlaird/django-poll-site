@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}{{ SITE_TITLE }}{% endblock %}</title>
+
+    <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        {% block body_div %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

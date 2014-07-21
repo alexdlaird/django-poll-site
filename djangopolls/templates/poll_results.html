@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load helpers %}
+
+{% block title %}{{ SITE_TITLE }} | Poll Results{% endblock %}
+
+{% block body_div %}
+    <div class="col-sm-12"><h1>{{ SITE_TITLE }}</h1></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>{{ poll.question }}{% if not poll.close_date %}
+                    <small>Open</small>{% endif %}</h2>
+                <h5>{{ poll.subtext }}</h5>
+                <h4>
+                    <small>{% if poll.close_date %}Closed: {{ poll.close_date }}{% else %}Opened:
+                        {{ poll.open_date }}{% endif %}</small>
+                </h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    {% with total_votes=votes.count %}
+                        {% for choice in choices %}
+                            {% with index=choice.pk %}
+                                <tr>
+                                    <td>{{ choice.answer }} - {{ vote_counts|get_from_dict:index }} vote
+                                        {% if vote_counts|get_from_dict:index > 1 %}s{% endif %}
+                                        ({{ vote_percentages|get_from_dict:index }}%)
+                                    </td>
+                                </tr>
+                            {% endwith %}
+                        {% endfor %}
+                        {% if choices.count == 0 %}
+                            <tr>
+                                <td>No choices exist for this poll ...</td>
+                            </tr>
+                        {% endif %}
+                    {% endwith %}
+                </table>
+                <a href="http://{{ host }}/poll" class="btn btn-default">Back</a>
+            </div>
+        </div>
+    </div>
+    {% if not poll.is_annonymous %}
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Voter Details</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        {% for vote in votes %}
+                            <tr>
+                                <td>{{ vote.email }}</td>
+                                <td>{{ vote.choice }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% if votes.count == 0 %}
+                            <p>No votes yet ...</p>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

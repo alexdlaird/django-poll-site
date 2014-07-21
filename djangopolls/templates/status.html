@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITE_TITLE }} | Status{% endblock %}
+
+{% block body_div %}
+    <div class="col-sm-12"><h1>{{ SITE_TITLE }}</h1></div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>{{ heading }}</h2></div>
+            <div class="panel-body">
+                <p>{{ message }}</p>
+
+                <p><a href="http://{{ host }}" class="btn btn-default">Home</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

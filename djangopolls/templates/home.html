@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITE_TITLE }} | Home{% endblock %}
+
+{% block body_div %}
+    <div class="col-sm-12"><h1>{{ SITE_TITLE }}</h1></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Open Polls</h2></div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    {% for poll in open_polls %}
+                        <tr>
+                            <td><a href="http://{{ host }}/poll/{{ poll.pk }}">{{ poll.question }}</a>
+                                (Opened {{ poll.open_date }})
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% if open_polls.count == 0 %}
+                    <p>No polls yet ...</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Closed Polls</h2></div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    {% for poll in closed_polls %}
+                        <tr>
+                            <td><a href="http://{{ host }}/poll/{{ poll.pk }}">{{ poll.question }}</a>
+                                (Closed {{ poll.close_date }})
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% if closed_polls.count == 0 %}
+                    <p>No polls yet ...</p>
+                {% endif %}
+            </div>
+{% endblock %}
