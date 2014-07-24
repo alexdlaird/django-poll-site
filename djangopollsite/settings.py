@@ -84,7 +84,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Note: these are things we've added for our poll site
+"""
+Below are Django-specific settings we're modifying or that weren't auto-generated in our settings.py
+"""
+
+INSTALLED_APPS += ('django.contrib.humanize',)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -116,5 +120,5 @@ from django.conf import settings
 print settings.SITE_TITLE
 """
 
-SITE_TITLE = 'Django Polls'
-REQUIRED_EMAIL_EXTENSION = None #'@mysite.com'
+SITE_TITLE = 'ISE Polls'
+REQUIRED_EMAIL_EXTENSION = '@iseinc.biz'

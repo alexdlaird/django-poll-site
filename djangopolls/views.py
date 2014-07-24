@@ -52,7 +52,7 @@ def poll(request, poll_id):
                         request.user.is_authenticated() and request.user.is_superuser and 'results' in request.GET):
             # Note that until we call some evaluative function like count() or all(), we have a chained and
             # optimized Django QuerySet
-            votes = Vote.objects.filter(validation_slug='').all()
+            votes = Vote.objects.filter(accepted=True).all()
             vote_counts = {}
             vote_percentages = {}
             # All this processing is building toward passing something to a Django template, right? Django's template
@@ -60,7 +60,7 @@ def poll(request, poll_id):
             # processing in Python, so we should do as much heavy lifting in Python and pass the results into the
             # template instead of trying to process data during template parsing
             for choice in choices:
-                vote_count = Vote.objects.filter(choice=choice, validation_slug='').count()
+                vote_count = Vote.objects.filter(choice=choice, accepted=True).count()
                 vote_counts[choice.pk] = vote_count
                 vote_percentages[choice.pk] = (float(vote_count) / float(
                     votes.count())) * 100 if vote_count > 0 else 0
@@ -162,7 +162,7 @@ def vote(request, poll_id):
                 # be officially submitted and counted in the results; this URL is what is emailed to the
                 # user when they first cast their vote
                 vote = Vote.objects.get(validation_slug=request.GET['validation_slug'])
-                vote.validation_slug = ''
+                vote.accepted = True
                 vote.save()
 
                 response = render_to_response('status.html', {'SITE_TITLE': settings.SITE_TITLE,

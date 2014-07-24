@@ -3,7 +3,7 @@ from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from djangopolls.models import Poll, Choice
+from djangopolls.models import Poll, Choice, Vote
 
 
 class DjangoPollsAdminSite(AdminSite):
@@ -15,7 +15,6 @@ class DjangoPollsAdminSite(AdminSite):
     index_title = settings.SITE_TITLE
 
 django_polls_admin_site = DjangoPollsAdminSite()
-#admin.site.unregister(Group)
 
 
 class ChoiceInline(admin.TabularInline):

@@ -45,6 +45,7 @@ class Choice(models.Model):
 class Vote(models.Model):
     email = models.EmailField(max_length=256)
     validation_slug = models.SlugField(default=generate_slug, blank=True, null=True, unique=True)
+    accepted = models.BooleanField(default=False)
 
     choice = models.ForeignKey(Choice)
 

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 {% load helpers %}
 
 {% block title %}{{ SITE_TITLE }} | Poll Results{% endblock %}
@@ -22,9 +23,8 @@
                         {% for choice in choices %}
                             {% with index=choice.pk %}
                                 <tr>
-                                    <td>{{ choice.answer }} - {{ vote_counts|get_from_dict:index }} vote
-                                        {% if vote_counts|get_from_dict:index > 1 %}s{% endif %}
-                                        ({{ vote_percentages|get_from_dict:index }}%)
+                                    <td>{{ choice.answer }} - {{ vote_counts|get_from_dict:index|intcomma }} vote{% if vote_counts|get_from_dict:index > 1 %}s{% endif %}
+                                        ({{ vote_percentages|get_from_dict:index|floatformat:"2" }}%)
                                     </td>
                                 </tr>
                             {% endwith %}
