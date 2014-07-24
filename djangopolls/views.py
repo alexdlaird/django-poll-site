@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/dev/topics/http/views/
 from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.conf import settings
 
 # Import our models so we can interact with our database in our views
@@ -170,8 +171,9 @@ def vote(request, poll_id):
                                               context_instance=RequestContext(request))
             # If the user is a cheater ...
             else:
-                choices = Choice.objects.filter(poll=poll)
-                response = redirect('http://' + request.get_host() + '/poll/' + str(poll.pk))
+                # URLs change, your app may be deployed to multiple hosts, etc., so using Django's "reverse"
+                # shortcut tells Django to handle figuring out the actual URL upon evaluation
+                response = redirect(reverse('vote_id', args=[str(poll.pk)]))
     
     # The Poll ID given in the URL doesn't exist in the Database
     except Poll.DoesNotExist:

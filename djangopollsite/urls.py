@@ -20,6 +20,8 @@ urlpatterns = [
                url(r'^admin/', include(django_polls_admin_site.urls)),
                url(r'^$', 'djangopolls.views.home'),
                url(r'^polls$|^poll$', 'djangopolls.views.home'),
-               url(r'^poll/([0-9]+)$', 'djangopolls.views.poll'),
+               # Here we're going to vite our URL a "name"; look for the "reverse" function in
+               # views.py to see how this is used
+               url(r'^poll/([0-9]+)$', 'djangopolls.views.poll', name='vote_id'),
                url(r'^poll/([0-9]+)/vote$', 'djangopolls.views.vote'),
 ]
