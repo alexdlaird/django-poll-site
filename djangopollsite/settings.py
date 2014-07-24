@@ -120,5 +120,5 @@ from django.conf import settings
 print settings.SITE_TITLE
 """
 
-SITE_TITLE = 'ISE Polls'
-REQUIRED_EMAIL_EXTENSION = '@iseinc.biz'
+SITE_TITLE = 'Django Polls'
+REQUIRED_EMAIL_EXTENSION = None#'@mysite.com'

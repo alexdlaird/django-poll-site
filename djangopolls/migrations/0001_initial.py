@@ -48,6 +48,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('email', models.EmailField(max_length=256)),
                 ('validation_slug', models.SlugField(null=True, default=djangopolls.utils.generate_slug, blank=True, unique=True)),
+                ('accepted', models.BooleanField(default=False)),
                 ('choice', models.ForeignKey(to='djangopolls.Choice')),
             ],
             options={
