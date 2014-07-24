@@ -1,5 +1,5 @@
 """
-Django settings for djangopolls project.
+Django settings for djangopollsite project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -107,7 +107,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #EMAIL_HOST_PASSWORD = 'mysupersecretpassword'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Application-specific variables
+"""
+Everything above has been Django-specific configuration. Check out Django's awesome documentation
+for more details on that. But you can also use this file for custom configuration specific to your
+application, and it can be accessed in the same way you'd access any other Django setting, like so:
+
+from django.conf import settings
+print settings.SITE_TITLE
+"""
 
 SITE_TITLE = 'Django Polls'
 REQUIRED_EMAIL_EXTENSION = None #'@mysite.com'

@@ -1,3 +1,3 @@
 from django.test import TestCase
 
-# Create your tests here.
+# For shame. We've created no tests for our poll site ...
