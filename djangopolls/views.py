@@ -50,9 +50,8 @@ def poll(request, poll_id):
         # If the poll is closed, or we're a super user trying to view the results of an open poll ...
         if poll.close_date != None or (
                         request.user.is_authenticated() and request.user.is_superuser and 'results' in request.GET):
-            # Note that until we call some evaluative function like count() or all(), we have a chained and
-            # optimized Django QuerySet
-            votes = Vote.objects.filter(accepted=True).all()
+            # Note our use of __ here, which tells Django to further evaluate the relationship of the field we're evaluating
+            votes = Vote.objects.filter(choice__poll=poll, accepted=True).all()
             vote_counts = {}
             vote_percentages = {}
             # All this processing is building toward passing something to a Django template, right? Django's template
