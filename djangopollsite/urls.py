@@ -11,7 +11,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/http/urls/
 """
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 
 from djangopolls.admin import django_polls_admin_site
