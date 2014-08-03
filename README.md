@@ -38,9 +38,10 @@ In a production setting, you should not use the accompanying SQLite database. To
  - GRANT ALL PRIVILEGES ON DATABASE "db_name" to db_user;
  - \q
 
-Modify the database configuration in djangopollsite/settings.py to match the PostgreSQL settings found here: https://docs.djangoproject.com/en/1.7/ref/settings/#databases, then restart Apache:
+Modify the database configuration in djangopollsite/settings.py to match the PostgreSQL settings found here: https://docs.djangoproject.com/en/1.7/ref/settings/#databases, restart Apache, then run migrations on the Django project to rebuild the tables in the new database:
 
 - sudo service apache2 restart
+- sudo python manage.py migrate
 
 # More Information
 If you're looking for a more detailed tutorial on the code and deployment, check out the full tutorial found here: http://www.alexlaird.com/2014/08/django-an-introduction
