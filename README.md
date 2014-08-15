@@ -42,6 +42,3 @@ Modify the database configuration in djangopollsite/settings.py to match the Pos
 
 - sudo service apache2 restart
 - sudo python manage.py migrate
-
-# More Information
-If you're looking for a more detailed tutorial on the code and deployment, check out the full tutorial found here: http://www.alexlaird.com/2014/08/django-an-introduction
