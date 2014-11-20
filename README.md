@@ -23,6 +23,7 @@ You'll need to setup the following [Amazon Web Services (AWS)](http://aws.amazon
 Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 
 - Fork the repository on GitHub
+- Clone your forked repository
 - Modify the variables at the bottom of djangopollsite/settings.py to customize the application
 - Modify the HOSTNAME variables at the top of fabfile.py to point to your EC2 instance's DNS entry
 - Modify the REPO_URL variable at the top of fabfile.py to point to your fork of the repository
