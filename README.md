@@ -17,19 +17,20 @@ You'll need to setup the following [Amazon Web Services (AWS)](http://aws.amazon
 - Create an EC2 Security Group that has port 80 opened
 - [Create an S3 bucket](http://aws.amazon.com/s3/).
 - Generate an AWS Access Key and Secret Access Key
-- (Optional) An elastic IP associated with the VM
-- (Optional) A DNS entry pointing to the elastic IP address
+- (Optional) Create an elastic IP and associate it with the EC2 instace you created
+- (Optional) Create a DNS entry of your choosing to point to the elastic IP (AWS will generate their own DNS entry that you can also use, if you don't have your own domain name)
 
 Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 
-- Clone the source code
+- Fork the repository on GitHub
 - Modify the variables at the bottom of djangopollsite/settings.py to customize the application
-- Modify the variables at the top of fabfile.py to point to your EC2 instance's IP or domain
+- Modify the HOSTNAME variables at the top of fabfile.py to point to your EC2 instance's DNS entry
+- Modify the REPO_URL variable at the top of fabfile.py to point to your fork of the repository
 - From the Command Line at the root of the cloned source, execute "pip install -r reqs.txt"
 - From the Command Line at the root of the cloned source, execute "fab deploy"
 
 ## Use a Production-Like Database
-In a production setting, you should not use the accompanying SQLite database. To use a database like PostgreSQL, execute the following commands on the EC2 instance:
+In a production environment, you should not use the accompanying SQLite database. To use a database like PostgreSQL, execute the following commands on the EC2 instance:
 
 - sudo apt-getinstall python-psycopg2 postgresql-9.3
 - sudo -u postgres psql
