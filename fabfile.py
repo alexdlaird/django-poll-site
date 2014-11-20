@@ -17,6 +17,7 @@ from fabric.network import ssh
 
 # Modify these variables to configure the server to which you're deploying
 PROJECT_NAME = 'django-poll-site'
+REPO_URL = 'git@github.com:alexdlaird/django-poll-site.git'
 HOSTNAME = 'myserver.com'
 USERNAME = 'ubuntu'
 KEY_PATH = '~/.ssh/myserver.pem'
@@ -30,8 +31,8 @@ def deploy():
     path = SERVER_PATH
     
     with cd(path):
-        # Create our project's directory
-        run('mkdir ' + PROJECT_NAME, warn_only=True)
+        # Clone the Git repository
+        run('git clone %s %s' % (REPO_URL, PROJECT_NAME))
     
     with cd(path + '/' + PROJECT_NAME):
         # Ensure dependencies are installed on the server
