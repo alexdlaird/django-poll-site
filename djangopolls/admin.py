@@ -5,6 +5,10 @@ from django.conf import settings
 
 from djangopolls.models import Poll, Choice
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 
 class DjangoPollsAdminSite(AdminSite):
     """

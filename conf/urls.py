@@ -16,6 +16,10 @@ from django.contrib import admin
 
 from djangopolls.admin import django_polls_admin_site
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 urlpatterns = [
                url(r'^admin/', include(django_polls_admin_site.urls)),
                url(r'^$', 'djangopolls.views.home'),

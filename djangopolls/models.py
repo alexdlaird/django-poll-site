@@ -21,6 +21,10 @@ from django.utils import timezone
 
 from djangopolls.utils import generate_slug
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 
 class Poll(models.Model):
     question = models.CharField(max_length=256)

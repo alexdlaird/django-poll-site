@@ -18,6 +18,10 @@ from django.conf import settings
 # Import our models so we can interact with our database in our views
 from djangopolls.models import Poll, Choice, Vote
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 
 def home(request):
     # When accessing the Django ORM, we can chain database calls like "filter" and "exclude" together
